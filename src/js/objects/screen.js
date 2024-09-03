@@ -24,7 +24,7 @@ const screen = {
                             </ul>
                         </div>
             </li>`)
-        
+
         if (user.repositories.length > 0) {
             this.userProfile.innerHTML += `<div class="repositories">
                                                 <h2>Repositórios</h2>
@@ -32,12 +32,18 @@ const screen = {
                                             </div>`
         }
         let eventItens = ''
-        user.events.forEach(event => {
-            if (event.type === "PushEvent") {
-                eventItens += `<li><span>${event.repo.name}</span> - ${event.payload.commits[0].message}</li>`
-            } else {
-                eventItens += `<li><span>${event.repo.name}</span>  - Sem mensagem de commit</li>`
-            }
+        user.events.forEach(element => {
+            if (element.type === "PushEvent") { 
+                eventItens +=  `<li>
+                                    <h3>${element.repo.name}</h3>
+                                    <p> -- ${element.payload.commits[0].message}</p>
+                                </li>` 
+            }else { 
+                eventItens += `<li>
+                                    <h3>${element.repo.name}</h3>
+                                    <p>  -- Sem mensagem de commit</p>
+                                </li>` 
+        }
         })
         if (user.events.length > 0) {
             this.userProfile.innerHTML += `<div class="events">
