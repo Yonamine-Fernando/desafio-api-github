@@ -4,8 +4,6 @@ import { getEvents } from './service/event.js'
 
 import { user } from './objects/user.js'
 import { screen } from './objects/screen.js'
-// import { repositoriesInfo } from './objects/repositories.js'
-
 document.querySelector("#btn-search").addEventListener("click", () => {
     const userName = document.getElementById("input-search").value
     if (validadeEmpytInput(userName)) return
